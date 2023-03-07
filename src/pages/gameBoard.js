@@ -9,6 +9,7 @@ const GameBoard = () => {
   useEffect(() => {
     let newMap = [];
 
+	//set new 5 by 5 grid
     let counter = 0;
     for (let i = 1; i < 6; i++) {
       for (let j = 1; j < 6; j++) {
@@ -24,18 +25,24 @@ const GameBoard = () => {
 
     for (const t in newMap) {
       const element = newMap[t];
+	  //flip clicked tile and adjacent tiles
+	  //flip clicked tile
       if (element.x === x && element.y === y) {
         element.isLit = !element.isLit;
       }
+	  //flip tile to right
       if (element.x === x + 1 && element.y === y) {
         element.isLit = !element.isLit;
       }
+	  //flip tile below
 	  if (element.x === x && element.y === y + 1) {
         element.isLit = !element.isLit;
       }
+	  //flip tile to left
 	  if (element.x === x -1 && element.y === y) {
         element.isLit = !element.isLit;
       }
+	  //flip tile above
 	  if (element.x === x && element.y === y-1) {
         element.isLit = !element.isLit;
       }
