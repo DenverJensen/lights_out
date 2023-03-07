@@ -20,20 +20,33 @@ const GameBoard = () => {
   }, []);
 
   const onTileClick = (x, y) => {
-    let newMap = [{ ...tileMap }];
-
-    console.log(x, y);
+    let newMap = [...tileMap];
 
     for (const t in newMap) {
       const element = newMap[t];
-      console.log(element);
+      if (element.x === x && element.y === y) {
+        element.isLit = !element.isLit;
+      }
+      if (element.x === x + 1 && element.y === y) {
+        element.isLit = !element.isLit;
+      }
+	  if (element.x === x && element.y === y + 1) {
+        element.isLit = !element.isLit;
+      }
+	  if (element.x === x -1 && element.y === y) {
+        element.isLit = !element.isLit;
+      }
+	  if (element.x === x && element.y === y-1) {
+        element.isLit = !element.isLit;
+      }
     }
+    setTileMap(newMap);
   };
 
   return (
     <Box p={10} w="max-content" margin={'auto'}>
       <SimpleGrid columns={5} rows={5} gap={1}>
-        {tileMap.map(tile => (
+        {tileMap?.map(tile => (
           <Tile
             isLit={tile.isLit}
             key={tile.index}
