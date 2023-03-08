@@ -5,23 +5,39 @@ import {
   Grid,
   GridItem,
   SimpleGrid,
+  useToast,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import Tile from '../components/tile';
-
+import { Puzzles5 } from '../utilties/5Puzzles';
+import { getRandomInt } from './../utilties/functions';
 const GameBoard = () => {
   const [tileMap, setTileMap] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(1);
+  const toast = useToast();
 
   useEffect(() => {
     let newMap = [];
-
+    let currentPuzzle = Puzzles5[getRandomInt(Puzzles5.length)];
     //set new 5 by 5 grid
+    //set counter for tile index
     let counter = 0;
+    // outside loop for x coord
     for (let i = 1; i < 6; i++) {
+      //inside loop for y coord
       for (let j = 1; j < 6; j++) {
         counter++;
         newMap.push({ y: i, x: j, index: counter, isLit: false });
+      }
+    }
+
+    //flip tiles for current randomly selected level
+    for (const tile in newMap) {
+      for (const p in currentPuzzle) {
+        console.log(currentPuzzle[p], newMap[tile].index)
+        if (currentPuzzle[p] === newMap[tile].index) {
+            newMap[tile].isLit = true;
+        }
       }
     }
     setTileMap(newMap);
@@ -58,12 +74,13 @@ const GameBoard = () => {
   };
 
   return (
-    <Grid templateColumns="repeat(9,1fr)" flex={"0 1 auto"} float={"inherit"}>
-      <GridItem  colSpan={{ base: 9, md: 3 }} p={10}>
-        <Center>level select</Center>
+    <Grid templateColumns="repeat(9,1fr)" flex={'0 1 auto'} float={'inherit'}>
+      {/* dynamic colSpans for mobile friendly viewing */}
+      <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
+        <Center>{/* todo: create level bumper and reset button */}</Center>
       </GridItem>
       <GridItem colSpan={{ base: 9, md: 3 }}>
-        <Box p={10}  w="100%">
+        <Box p={10} w="100%">
           <SimpleGrid columns={5} rows={5} gap={1} minH="300px">
             {tileMap?.map(tile => (
               <Tile
@@ -78,7 +95,7 @@ const GameBoard = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
-        <Center>Settings</Center>
+        <Center>{/* todo: settings pannel slider */}</Center>
       </GridItem>
     </Grid>
   );
