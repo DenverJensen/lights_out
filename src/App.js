@@ -22,10 +22,8 @@ import GameBoard from './pages/gameBoard';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box minH="100vh">
         <Header />
         <GameBoard />
-      </Box>
     </ChakraProvider>
   );
 }

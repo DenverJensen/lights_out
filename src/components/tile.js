@@ -1,12 +1,16 @@
 import { Button } from '@chakra-ui/react';
+//import './tile.scss'
 
 const Tile = ({ isLit, x, y, onClick }) => {
   return (
     <Button
+    className='tile'
       colorScheme={isLit ? 'blue' : 'gray'}
       size={'md'}
-      w="100px"
-      h="100px"
+    //   w="100%"
+      //minH="60px"
+        h="5vw"
+        minH={"100%"}
 	  onClick={()=>{onClick(x,y)}}
     />
   );
