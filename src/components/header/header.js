@@ -1,19 +1,12 @@
 import {
-  Header,
   Center,
-  Flex,
-  Spacer,
   useColorModeValue,
-  Text,
   Heading,
   Box,
-  HStack,
   Grid,
   GridItem,
-  useColorMode,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../../utilties/ColorModeSwitcher';
-import { Logo } from '../../utilties/Logo';
 
 const LightsHeader = () => {
   const color = useColorModeValue('gray.400', 'gray.700');

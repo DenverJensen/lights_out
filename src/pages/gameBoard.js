@@ -1,11 +1,10 @@
 import {
   Box,
   Center,
-  Flex,
   Grid,
   GridItem,
   SimpleGrid,
-  useToast,
+//   useToast,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import Tile from '../components/tile/tile';
@@ -14,8 +13,8 @@ import { getRandomInt } from './../utilties/functions';
 import HowToPlay from '../components/howToPlay/howToPlay';
 const GameBoard = () => {
   const [tileMap, setTileMap] = useState([]);
-  const [currentLevel, setCurrentLevel] = useState(1);
-  const toast = useToast();
+//   const [currentLevel, setCurrentLevel] = useState(1);
+//   const toast = useToast();
 
   useEffect(() => {
     let newMap = [];
