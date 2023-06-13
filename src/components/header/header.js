@@ -12,7 +12,8 @@ import {
   GridItem,
   useColorMode,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../utilties/ColorModeSwitcher';
+import { ColorModeSwitcher } from '../../utilties/ColorModeSwitcher';
+import { Logo } from '../../utilties/Logo';
 
 const LightsHeader = () => {
   const color = useColorModeValue('gray.400', 'gray.700');
@@ -28,6 +29,7 @@ const LightsHeader = () => {
        
           <Center>
             <Heading letterSpacing={"5px"} color={highLight}> LIGHTS OUT</Heading>
+          {/* <Logo/> */}
             </Center>
           </GridItem>
           <ColorModeSwitcher w="100px" />

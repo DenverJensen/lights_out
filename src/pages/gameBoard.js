@@ -8,9 +8,10 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import Tile from '../components/tile';
+import Tile from '../components/tile/tile';
 import { Puzzles5 } from '../utilties/5Puzzles';
 import { getRandomInt } from './../utilties/functions';
+import HowToPlay from '../components/howToPlay/howToPlay';
 const GameBoard = () => {
   const [tileMap, setTileMap] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -34,9 +35,9 @@ const GameBoard = () => {
     //flip tiles for current randomly selected level
     for (const tile in newMap) {
       for (const p in currentPuzzle) {
-        console.log(currentPuzzle[p], newMap[tile].index)
+        console.log(currentPuzzle[p], newMap[tile].index);
         if (currentPuzzle[p] === newMap[tile].index) {
-            newMap[tile].isLit = true;
+          newMap[tile].isLit = true;
         }
       }
     }
@@ -95,7 +96,10 @@ const GameBoard = () => {
         </Box>
       </GridItem>
       <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
-        <Center>{/* todo: settings pannel slider */}</Center>
+        <Center>
+          {/* todo: settings pannel slider */}
+          <HowToPlay />
+        </Center>
       </GridItem>
     </Grid>
   );

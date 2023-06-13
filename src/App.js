@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './utilties/ColorModeSwitcher';
 import { Logo } from './utilties/Logo';
-import Header from './components/header';
+import Header from './components/header/header';
 import GameBoard from './pages/gameBoard';
 
 function App() {
