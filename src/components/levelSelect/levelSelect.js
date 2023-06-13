@@ -1,4 +1,4 @@
-const LevelSelect = () => {
+const LevelSelect = ({level, setLevel}) => {
     return ( <>Level Select</> );
 }
  
