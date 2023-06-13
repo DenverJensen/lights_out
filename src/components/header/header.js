@@ -25,7 +25,7 @@ const LightsHeader = () => {
           {/* <Logo/> */}
             </Center>
           </GridItem>
-          <ColorModeSwitcher w="100px" />
+          <ColorModeSwitcher w="50px" />
         </Grid>
       </Box>
     </>
