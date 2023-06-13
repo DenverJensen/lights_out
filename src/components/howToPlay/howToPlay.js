@@ -4,7 +4,7 @@ const HowToPlay = () => {
   return (
     <>
       {' '}
-      <Heading size="sm">
+      <Heading size="sm" mt={8}>
         Object: <br />
         To turn all the lights out on the keypad, but each time you press a lit
         or unlit button, it not only changes that button, but also the adjacent

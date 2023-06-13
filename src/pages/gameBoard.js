@@ -4,21 +4,28 @@ import {
   Grid,
   GridItem,
   SimpleGrid,
-//   useToast,
+  //   useToast,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import Tile from '../components/tile/tile';
 import { Puzzles5 } from '../utilties/5Puzzles';
-import { getRandomInt } from './../utilties/functions';
+// import { getRandomInt } from './../utilties/functions';
 import HowToPlay from '../components/howToPlay/howToPlay';
+import LevelSelect from './../components/levelSelect/levelSelect';
 const GameBoard = () => {
   const [tileMap, setTileMap] = useState([]);
-//   const [currentLevel, setCurrentLevel] = useState(1);
-//   const toast = useToast();
+  const [currentLevel, setCurrentLevel] = useState(1);
+  //   const toast = useToast();
 
   useEffect(() => {
+    setBoard(currentLevel);
+  }, [currentLevel, setCurrentLevel]);
+
+  const setBoard = level => {
     let newMap = [];
-    let currentPuzzle = Puzzles5[getRandomInt(Puzzles5.length)];
+
+    let currentPuzzle = Puzzles5[level - 1];
+
     //set new 5 by 5 grid
     //set counter for tile index
     let counter = 0;
@@ -31,7 +38,7 @@ const GameBoard = () => {
       }
     }
 
-    //flip tiles for current randomly selected level
+    //flip tiles for current selected level
     for (const tile in newMap) {
       for (const p in currentPuzzle) {
         console.log(currentPuzzle[p], newMap[tile].index);
@@ -41,7 +48,7 @@ const GameBoard = () => {
       }
     }
     setTileMap(newMap);
-  }, []);
+  };
 
   const onTileClick = (x, y) => {
     let newMap = [...tileMap];
@@ -77,7 +84,9 @@ const GameBoard = () => {
     <Grid templateColumns="repeat(9,1fr)" flex={'0 1 auto'} float={'inherit'}>
       {/* dynamic colSpans for mobile friendly viewing */}
       <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
-        <Center>{/* todo: create level bumper and reset button */}</Center>
+        <Center mt={8}>
+          <LevelSelect level={currentLevel} setLevel={setCurrentLevel} reset={setBoard} />
+        </Center>
       </GridItem>
       <GridItem colSpan={{ base: 9, md: 3 }}>
         <Box p={10} w="100%">
