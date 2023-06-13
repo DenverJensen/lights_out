@@ -3,7 +3,6 @@ import { Puzzles5 } from '../../utilties/5Puzzles';
 
 const LevelSelect = ({ level, setLevel, reset }) => {
     const levelLength = Puzzles5.length
-    console.log(level ==1)
 
   return (
     <Heading size="md">
@@ -15,7 +14,7 @@ const LevelSelect = ({ level, setLevel, reset }) => {
           onClick={() => {
             setLevel(level - 1);
           }}
-          isDisabled={level==1}
+          isDisabled={level===1}
         >
           -
         </Button>
@@ -33,7 +32,7 @@ const LevelSelect = ({ level, setLevel, reset }) => {
           onClick={() => {
             setLevel(level + 1);
           }}
-          isDisabled={level == levelLength}
+          isDisabled={level === levelLength}
         >
           +
         </Button>
