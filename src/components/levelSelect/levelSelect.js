@@ -1,6 +1,10 @@
 import { Button, Center, Heading, Text } from '@chakra-ui/react';
+import { Puzzles5 } from '../../utilties/5Puzzles';
 
 const LevelSelect = ({ level, setLevel, reset }) => {
+    const levelLength = Puzzles5.length
+    console.log(level ==1)
+
   return (
     <Heading size="md">
       <Center>Current Level: {level}</Center>
@@ -11,6 +15,7 @@ const LevelSelect = ({ level, setLevel, reset }) => {
           onClick={() => {
             setLevel(level - 1);
           }}
+          isDisabled={level==1}
         >
           -
         </Button>
@@ -28,6 +33,7 @@ const LevelSelect = ({ level, setLevel, reset }) => {
           onClick={() => {
             setLevel(level + 1);
           }}
+          isDisabled={level == levelLength}
         >
           +
         </Button>

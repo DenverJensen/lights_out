@@ -41,7 +41,6 @@ const GameBoard = () => {
     //flip tiles for current selected level
     for (const tile in newMap) {
       for (const p in currentPuzzle) {
-        console.log(currentPuzzle[p], newMap[tile].index);
         if (currentPuzzle[p] === newMap[tile].index) {
           newMap[tile].isLit = true;
         }
