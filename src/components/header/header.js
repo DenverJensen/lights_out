@@ -16,7 +16,7 @@ const LightsHeader = () => {
     <>
       <Box backgroundColor={color} height="80px" p={3}>
         <Grid templateColumns="repeat(6, 1fr)" gap={4}>
-          <GridItem colStart={{base:1, md:2, lg:3}} colEnd={5}>
+          <GridItem colStart={{base:1, md:2, lg:3}} colEnd={{base:6, md:5, lg:5}}>
           {/* <GridItem colStart={3} colEnd={5}> */}
    
        

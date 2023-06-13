@@ -83,12 +83,16 @@ const GameBoard = () => {
   return (
     <Grid templateColumns="repeat(9,1fr)" flex={'0 1 auto'} float={'inherit'}>
       {/* dynamic colSpans for mobile friendly viewing */}
-      <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
+      <GridItem colSpan={{ base: 9, lg: 3 }} p={10}>
         <Center mt={8}>
-          <LevelSelect level={currentLevel} setLevel={setCurrentLevel} reset={setBoard} />
+          <LevelSelect
+            level={currentLevel}
+            setLevel={setCurrentLevel}
+            reset={setBoard}
+          />
         </Center>
       </GridItem>
-      <GridItem colSpan={{ base: 9, md: 3 }}>
+      <GridItem colSpan={{ base: 9, lg: 3 }}>
         <Box p={10} w="100%">
           <SimpleGrid columns={5} rows={5} gap={1} minH="300px">
             {tileMap?.map(tile => (
@@ -103,7 +107,7 @@ const GameBoard = () => {
           </SimpleGrid>
         </Box>
       </GridItem>
-      <GridItem colSpan={{ base: 9, md: 3 }} p={10}>
+      <GridItem colSpan={{ base: 9, lg: 3 }} p={10}>
         <Center>
           {/* todo: settings pannel slider */}
           <HowToPlay />
