@@ -10,7 +10,7 @@ import { ColorModeSwitcher } from '../../utilties/ColorModeSwitcher';
 
 const LightsHeader = () => {
   const color = useColorModeValue('gray.400', 'gray.700');
-  const highLight = useColorModeValue('#3f48cc', "#90cdf4" )
+  const highLight = useColorModeValue('blue.600', "#90cdf4" )
 
   return (
     <>
