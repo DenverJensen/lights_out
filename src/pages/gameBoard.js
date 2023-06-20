@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   //   useToast,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Tile from '../components/tile/tile';
 import { Puzzles5 } from '../utilties/5Puzzles';
 // import { getRandomInt } from './../utilties/functions';
@@ -15,7 +15,7 @@ import LevelSelect from './../components/levelSelect/levelSelect';
 const GameBoard = () => {
   const [tileMap, setTileMap] = useState([]);
   const [currentLevel, setCurrentLevel] = useState(1);
-  //   const toast = useToast();
+  const [isWon, setIsWon] = useState(false);
 
   useEffect(() => {
     setBoard(currentLevel);
@@ -36,6 +36,7 @@ const GameBoard = () => {
         counter++;
         newMap.push({ y: i, x: j, index: counter, isLit: false });
       }
+      setIsWon(false);
     }
 
     //flip tiles for current selected level
@@ -51,7 +52,6 @@ const GameBoard = () => {
 
   const onTileClick = (x, y) => {
     let newMap = [...tileMap];
-
     for (const t in newMap) {
       const element = newMap[t];
       //flip clicked tile and adjacent tiles
@@ -77,6 +77,44 @@ const GameBoard = () => {
       }
     }
     setTileMap(newMap);
+
+    let winnerCheck;
+    if (tileMap.length > 1) {
+      winnerCheck = true;
+    } else {
+      winnerCheck = false;
+    }
+    for (const t in tileMap) {
+      if (tileMap[t].isLit && tileMap.length > 5) {
+        winnerCheck = false;
+      }
+    }
+    if (winnerCheck) {
+      Celebrate();
+    }
+    setIsWon(winnerCheck);
+  };
+
+  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const Celebrate = async () => {
+    const winSquares = [
+      1, 2, 3, 4, 5, 10, 9, 8, 7, 6, 11, 12, 13, 14, 15, 20, 19, 18, 17, 16, 21,
+      22, 23, 24, 25,
+    ];
+    for (const t in winSquares) {
+      let newMap = [...tileMap];
+      const element = newMap[winSquares[t] - 1];
+
+      if (winSquares.includes(element.index)) {
+        element.isLit = true;
+        setTileMap(prevMap => newMap, [tileMap]);
+        await sleep(150);
+      }
+    }
   };
 
   return (
@@ -101,6 +139,7 @@ const GameBoard = () => {
                 x={tile.x}
                 y={tile.y}
                 onClick={onTileClick}
+                isWon={isWon}
               />
             ))}
           </SimpleGrid>

@@ -1,11 +1,24 @@
 import { Button } from '@chakra-ui/react';
 //import './tile.scss'
 
-const Tile = ({ isLit, x, y, onClick }) => {
+const Tile = ({ isLit, x, y, onClick, isWon }) => {
+  const getColor = () => {
+    if (isWon) {
+      if (isLit) {
+        return 'green';
+      }
+      return 'gray';
+    } else if (isLit) {
+      return 'blue';
+    }
+    return 'gray';
+  };
+
+  console.log(isWon);
   return (
     <Button
       className="tile"
-      colorScheme={isLit ? 'blue' : 'gray'}
+      colorScheme={getColor()}
       size={'md'}
       //   w="100%"
       //minH="60px"
@@ -14,7 +27,6 @@ const Tile = ({ isLit, x, y, onClick }) => {
       border="1px outset gray"
       onClick={() => {
         onClick(x, y);
-        
       }}
     />
   );
