@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   //   useToast,
 } from '@chakra-ui/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Tile from '../components/tile/tile';
 import { Puzzles5 } from '../utilties/5Puzzles';
 // import { getRandomInt } from './../utilties/functions';
@@ -95,7 +95,7 @@ const GameBoard = () => {
     setIsWon(winnerCheck);
   };
 
-  
+
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
